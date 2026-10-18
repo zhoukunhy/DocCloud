@@ -1,0 +1,35 @@
+# 文件存储服务业务配置：数据源、MyBatis-Plus、MinIO、接口文档
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/doc_file?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+  servlet:
+    multipart:
+      # 单文件最大 50MB
+      max-file-size: 50MB
+      # 单请求最大 100MB
+      max-request-size: 100MB
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    # 开发期打印 SQL，联调完成后可关闭
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
+    db-config:
+      id-type: assign_id
+
+# MinIO 对象存储：业务阶段由 MinioConfig 读取并创建客户端
+minio:
+  endpoint: http://127.0.0.1:9000
+  access-key: minioadmin
+  secret-key: minioadmin
+  bucket: doc-cloud
+
+# 接口文档：http://127.0.0.1:8083/swagger-ui.html
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

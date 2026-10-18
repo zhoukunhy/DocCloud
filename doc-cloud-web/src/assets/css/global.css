@@ -1,0 +1,78 @@
+/* ========== DocCloud 全局样式 ========== */
+:root {
+  --doc-primary: #409eff;
+  --doc-success: #67c23a;
+  --doc-warning: #e6a23c;
+  --doc-danger: #f56c6c;
+  --doc-text-main: #303133;
+  --doc-text-secondary: #909399;
+  --doc-border: #e4e7ed;
+  --doc-bg: #f5f7fa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', Arial, sans-serif;
+  font-size: 14px;
+  color: var(--doc-text-main);
+  background-color: var(--doc-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== 通用工具类 ===== */
+.flex {
+  display: flex;
+}
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.text-secondary {
+  color: var(--doc-text-secondary);
+}
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 页面通用留白容器 */
+.page-container {
+  padding: 16px;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c0c4cc;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}

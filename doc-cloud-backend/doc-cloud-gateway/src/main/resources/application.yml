@@ -1,0 +1,53 @@
+# 网关服务配置：端口、Nacos 注册、Sentinel、路由规则、跨域
+server:
+  port: 8080
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8858
+        port: 8719
+      eager: true
+    gateway:
+      # 不启用自动路由发现，统一使用下方显式路由配置
+      discovery:
+        locator:
+          enabled: false
+      # 全局跨域：前端开发服务器(5173)直连网关
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOriginPatterns: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+      # 路由规则：保留完整路径转发，业务服务 Controller 以 /api/xx 为前缀
+      routes:
+        - id: user-service
+          uri: lb://doc-cloud-user-service
+          predicates:
+            - Path=/api/user/**
+        - id: doc-service
+          uri: lb://doc-cloud-doc-service
+          predicates:
+            - Path=/api/doc/**
+        - id: file-service
+          uri: lb://doc-cloud-file-service
+          predicates:
+            - Path=/api/file/**
+        - id: search-service
+          uri: lb://doc-cloud-search-service
+          predicates:
+            - Path=/api/search/**
+        - id: message-service
+          uri: lb://doc-cloud-message-service
+          predicates:
+            - Path=/api/message/**
+
+logging:
+  level:
+    com.doccloud: debug

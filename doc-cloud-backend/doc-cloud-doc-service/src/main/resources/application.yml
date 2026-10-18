@@ -1,0 +1,35 @@
+# 文档核心服务业务配置：数据源、MyBatis-Plus、Redis、RocketMQ、接口文档
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/doc_doc?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    # 开发期打印 SQL，联调完成后可关闭
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
+    db-config:
+      id-type: assign_id
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# RocketMQ：业务阶段启用（文档变更事件 -> 异步同步 ES / 站内消息）
+#rocketmq:
+#  name-server: 127.0.0.1:9876
+#  producer:
+#    group: doc-cloud-doc-producer
+
+# 接口文档：http://127.0.0.1:8082/swagger-ui.html
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

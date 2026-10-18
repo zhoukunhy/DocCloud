@@ -1,0 +1,33 @@
+# ============ 编译构建产物 ============
+# 后端 Maven
+doc-cloud-backend/**/target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# 前端 Vite
+doc-cloud-web/node_modules/
+doc-cloud-web/dist/
+doc-cloud-web/dist-ssr/
+*.local
+
+# ============ 日志 ============
+*.log
+logs/
+
+# ============ IDE ============
+.idea/
+*.iml
+*.iws
+.vscode/
+*.code-workspace
+
+# ============ 操作系统 ============
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ============ 运行时数据（本机调试产生的） ============
+*.pid
+*.seed
+.eslintcache

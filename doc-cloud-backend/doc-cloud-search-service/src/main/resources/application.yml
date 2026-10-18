@@ -1,0 +1,14 @@
+# 检索服务业务配置：Elasticsearch、RocketMQ、接口文档
+spring:
+  elasticsearch:
+    uris: http://127.0.0.1:9200
+    # ES 未启动时不影响服务启动（客户端懒连接）
+
+# RocketMQ：业务阶段启用（消费文档变更消息，同步索引）
+#rocketmq:
+#  name-server: 127.0.0.1:9876
+
+# 接口文档：http://127.0.0.1:8084/swagger-ui.html
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

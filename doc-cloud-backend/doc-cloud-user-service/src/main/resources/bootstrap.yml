@@ -1,0 +1,18 @@
+# 用户服务启动引导配置：bootstrap.yml 优先于 application.yml 加载
+server:
+  port: 8081  # 后续可移至 Nacos 远程配置统一管理
+
+spring:
+  application:
+    name: doc-cloud-user-service
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        # Nacos 未启动时允许服务正常启动（脚手架阶段）
+        fail-fast: false

@@ -1,0 +1,28 @@
+# 消息服务业务配置：数据源、MyBatis-Plus、RocketMQ、接口文档
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/doc_message?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    # 开发期打印 SQL，联调完成后可关闭
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
+    db-config:
+      id-type: assign_id
+
+# RocketMQ：业务阶段启用（消费文档变更/分享事件生成站内信，消费端幂等处理）
+#rocketmq:
+#  name-server: 127.0.0.1:9876
+#  consumer:
+#    group: doc-cloud-message-consumer
+
+# 接口文档：http://127.0.0.1:8085/swagger-ui.html
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

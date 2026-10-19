@@ -31,3 +31,9 @@ Desktop.ini
 *.pid
 *.seed
 .eslintcache
+
+# ============ 项目过程文档（仅本地留存，不提交） ============
+init.md
+任务完成记录.md
+手动搭建完整步骤.md
+接口约定.md
